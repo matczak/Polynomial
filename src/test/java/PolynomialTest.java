@@ -9,25 +9,25 @@ import static org.junit.Assert.assertTrue;
  */
 public class PolynomialTest {
 
-    private Polynomial Polynomial;
+    private Polynomial polynomial;
 
     @Before
     public void setUp() throws Exception {
-        Polynomial = new Polynomial();
+        polynomial = new Polynomial();
     }
 
     @Test
     public void whenPolynomialHasFirstAndLastArgument_polynomialIsNotPrime() throws Exception {
-        assertFalse(Polynomial.isPrime("x^3+1"));
+        assertFalse(polynomial.isPrime("x^3+1"));
     }
 
     @Test
     public void givenAllArgs_whenPolynomialHasFourthDegree_polynomialIsNotPrime() throws Exception {
-        assertFalse(Polynomial.isPrime("x^4+x^3+x^2+1"));
+        assertFalse(polynomial.isPrime("x^4+x^3+x^2+1"));
     }
 
     @Test
     public void givenFirstSecondAndFourthArg_whenPolynomialHasThirdDegree_polynomialIsPrime() throws Exception {
-        assertTrue(Polynomial.isPrime("x^3+x^1+1"));
+        assertTrue(polynomial.isPrime("x^3+x^1+1"));
     }
 }

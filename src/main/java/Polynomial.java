@@ -28,16 +28,16 @@ public class Polynomial {
         Set<Integer> elements = new HashSet<>();
         int totalResults = (int) Math.pow(2, degree) - 1;
 
-        while (elements.size() <= totalResults) {
+        while (elements.size() < totalResults) {
 
             int value = arrayToInt(previousResult);
-            System.out.println(value);
             if (elements.contains(value))
                 return false;
 
             elements.add(value);
             previousResult = multiplyMatrixByVector(matrix, previousResult);
         }
+
         return true;
     }
 
@@ -56,9 +56,14 @@ public class Polynomial {
 
         for (int i = 0; i < length; ++i) {
             for (int j = 0; j < length; ++j) {
-                result[i] = result[i] || (vector[j] && matrix[i][j]);
-                if (result[i])
-                    break;
+                /*
+                suma % 2
+
+                0 + 0 -> 0
+                0 + 1 -> 1
+                1 + 1 -> 0
+                */
+                result[i] = result[i] ^ (vector[j] && matrix[i][j]);
             }
         }
 
