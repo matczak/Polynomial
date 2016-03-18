@@ -15,8 +15,9 @@ public class Main {
         System.setProperty("java.util.concurrent.ForkJoinPool.common.parallelism", String.valueOf(availableProcessors));
 
         long start = System.nanoTime();
+        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
 
-        Map<String, Boolean> result = Files.readAllLines(Paths.get("c:/input.txt"))
+        Map<String, Boolean> result = Files.readAllLines(Paths.get(classloader.getResource("input.txt").getFile()))
                 .parallelStream()
                 .collect(Collectors.toMap(Function.identity(), polynomial::isPrime));
 
